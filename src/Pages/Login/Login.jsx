@@ -1,22 +1,45 @@
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 
 import { FcGoogle } from 'react-icons/fc'
 import { useContext } from 'react'
 import { AuthContext } from '../../Provider/AuthProvider'
 
+const navigate= useNavigate
 const Login = () => {
-  const { signIn } = useContext(AuthContext)
+  const { signIn,googleRegister } = useContext(AuthContext)
   const handleSignIn = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
-    signIn()
+    signIn(email,password)
       .then(result => console.log(result.user))
       .catch(error => {
         console.log(error);
       })
+  }
+  const handleGoogleRegister=()=>{
+    googleRegister()
+    .then(result=>{
+      const loggedUSer=result.user;
+      const user={email:loggedUSer.email}
+      fetch(`http://localhost:5000/user/${result.user.email}`,{
+        method:"PUT",
+        headers:{
+          'content-type':"application/json",
+
+        },
+        body:JSON.stringify(user)
+      })
+      .then(res=>res.json())
+      .then(data=>{
+        console.log(data);
+      })
+      console.log(result.user)
+      navigate('/')
+    })
+    .catch(error=>{console.log(error.user);})
   }
   return (
     <div className='flex justify-center items-center min-h-screen'>
@@ -34,16 +57,11 @@ const Login = () => {
         >
           <div className='space-y-4'>
             <div>
-              <label htmlFor='email' className='block mb-2 text-sm'>
+              <label htmlFor='email' className='block mb-2 text-sm'>N
                 Email address
               </label>
               <input
-                type='email'
-                name='email'
-                
-                required
-                placeholder='Enter Your Email Here'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
+                type='email' name='email' required placeholder='Enter Your Email Here' className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
                 data-temp-mail-org='0'
               />
             </div>
@@ -56,7 +74,7 @@ const Login = () => {
               <input
                 type='password'
                 name='password'
-                
+
                 required
                 placeholder='*******'
                 className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900'
@@ -68,7 +86,7 @@ const Login = () => {
             <button
               type='submit'
               className='bg-rose-500 w-full rounded-md py-3 text-white'
-              
+
             >
               Continue
             </button>
@@ -86,7 +104,7 @@ const Login = () => {
           </p>
           <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
         </div>
-        <div className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
+        <div onClick={handleGoogleRegister} className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
           <FcGoogle size={32} />
 
           <p>Continue with Google</p>
