@@ -14,6 +14,7 @@ import DashBoard from './DashBoard/DashBoard/DashBoard.jsx';
 import User from './Components/User/User.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Instructor from './Pages/Instructor/Instructor.jsx';
+import AddClass from './DashBoard/AddClass/AddClass.jsx';
 
 // import User from './Components/User/User.jsx';
 
@@ -41,23 +42,31 @@ const router = createBrowserRouter([
         path: '/register',
         element: <Register></Register>
       },
-      {
-        path: '/dashboard',
-        element: <DashBoard></DashBoard>,
-      },
-      {
-        path: '/dashboard/user',
-        element: <User></User>
-      }
+      // {
+      //   path: '/dashboard',
+      //   element: <DashBoard></DashBoard>,
+      // },
+      // {
+      //   path: '/dashboard/user',
+      //   element: <User></User>
+      // },
+      // {
+      //   path: '/dashboard/addClass',
+      //   element: <AddClass></AddClass>
+      // }
     ]
   },
   {
-    path: '/dashboard',
+    path: 'dashboard',
     element: <DashBoard></DashBoard>,
     children: [
       {
         path: 'user',
         element: <User></User>
+      },
+      {
+        path: 'addClass',
+        element: <AddClass></AddClass>
       }
     ]
   }

@@ -77,7 +77,7 @@ const Register = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                const user={email:result.user.email, photo:loggedUser.photoURL}
+                const user={email:result.user.email,name:loggedUser.displayName, photo:loggedUser.photoURL}
                 fetch(`http://localhost:5000/user/${result.user.email}`, {
                     method: "PUT",
                     headers: {

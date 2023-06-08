@@ -38,7 +38,7 @@ const Login = () => {
     googleRegister()
     .then(result=>{
       const loggedUser=result.user;
-      const user={email:loggedUser.email, photo:loggedUser.photoURL}
+      const user={email:loggedUser.email, name:loggedUser.displayName, photo:loggedUser.photoURL}
       fetch(`http://localhost:5000/user/${result.user.email}`,{
         method:"PUT",
         headers:{
