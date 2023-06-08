@@ -71,13 +71,26 @@ const Register = () => {
 
     const onSubmit = data => {
         console.log(data);
-        const email=data.email
-        const password=data.password
-        createUser(email,password)
+        const email = data.email
+        const password = data.password
+        createUser(email, password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                
+                const user={email:result.user.email, photo:loggedUser.photoURL}
+                fetch(`http://localhost:5000/user/${result.user.email}`, {
+                    method: "PUT",
+                    headers: {
+                        'content-type': "application/json",
+
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                    })
+
                 // saveUSer(loggedUser)
                 // Swal.fire({
                 //     position: 'top-end',
@@ -88,7 +101,7 @@ const Register = () => {
                 // });
                 navigate('/');
                 // reset();
-                
+
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         console.log('user profile info updated')
@@ -106,15 +119,15 @@ const Register = () => {
                     icon: 'error',
                     title: 'Oops...',
                     text: error.message,
-                    
+
                 })
             })
-        
+
     };
 
     return (
         <>
-            
+
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">

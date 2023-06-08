@@ -20,8 +20,8 @@ const Navber = () => {
                         {
                             user ? <li><button onClick={handleLogOut}>logout</button></li> : <li><Link to={'/login'}>Login</Link></li>
                         }
-                        <li><Link></Link></li>
-                        <li><Link></Link></li>
+                        <li><Link to={'/dashboard'}>DashBoard</Link></li>
+                        <li><Link to={'/instructor'}>Instructor</Link></li>
                     </ul>
                 </div>
                 <a className="btn btn-ghost normal-case text-xl">Sports academies</a>
@@ -32,8 +32,8 @@ const Navber = () => {
                     {
                         user ? <li><button onClick={handleLogOut}>logout</button></li> : <li><Link to={'/login'}>Login</Link></li>
                     }
-                    <li><Link></Link></li>
-                    <li><Link></Link></li>
+                    <li><Link to={'/dashboard'}>DashBoard</Link></li>
+                    <li><Link to={'/instructor'}>Instructor</Link></li>
                 </ul>
             </div>
             <div className="dropdown dropdown-end">

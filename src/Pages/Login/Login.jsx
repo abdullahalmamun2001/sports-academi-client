@@ -14,7 +14,22 @@ const Login = () => {
     const password = form.password.value;
     console.log(email, password);
     signIn(email,password)
-      .then(result => console.log(result.user))
+      .then(result => {
+        const user={email:result.user.email,photo:result.user.photoURL}
+        fetch(`http://localhost:5000/user/${result.user.email}`,{
+        method:"PUT",
+        headers:{
+          'content-type':"application/json",
+
+        },
+        body:JSON.stringify(user)
+      })
+      .then(res=>res.json())
+      .then(data=>{
+        console.log(data);
+      })
+      })
+      
       .catch(error => {
         console.log(error);
       })
@@ -22,8 +37,8 @@ const Login = () => {
   const handleGoogleRegister=()=>{
     googleRegister()
     .then(result=>{
-      const loggedUSer=result.user;
-      const user={email:loggedUSer.email}
+      const loggedUser=result.user;
+      const user={email:loggedUser.email, photo:loggedUser.photoURL}
       fetch(`http://localhost:5000/user/${result.user.email}`,{
         method:"PUT",
         headers:{
