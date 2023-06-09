@@ -17,7 +17,14 @@ const AllClass = () => {
                     
                   </h2>
                   <p>Price : {s.price}</p>
-                  
+                  <div >
+                    <button className="btn btn-secondary">Add</button>
+                    
+                  </div>
+                  <div >
+                    <button className="btn btn-secondary px-8-">Deny</button>
+                    
+                  </div>
                 </div>
               </div>)
             }
