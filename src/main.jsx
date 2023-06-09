@@ -15,6 +15,8 @@ import User from './Components/User/User.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Instructor from './Pages/Instructor/Instructor.jsx';
 import AddClass from './DashBoard/AddClass/AddClass.jsx';
+import Feedback from './Components/Feedback/Feedback.jsx';
+import AllClass from './DashBoard/DashBoard/AllClass/AllClass.jsx';
 
 // import User from './Components/User/User.jsx';
 
@@ -67,6 +69,14 @@ const router = createBrowserRouter([
       {
         path: 'addClass',
         element: <AddClass></AddClass>
+      },
+      {
+        path: 'feedback',
+        element: <Feedback></Feedback>
+      },
+      {
+        path: 'allClass',
+        element: <AllClass></AllClass>
       }
     ]
   }

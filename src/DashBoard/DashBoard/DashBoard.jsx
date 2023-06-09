@@ -19,6 +19,8 @@ const DashBoard = () => {
             {/* Sidebar content here */}
             <li><Link to={'/dashboard/user'}>user</Link></li>
             <li><Link to={'/dashboard/addClass'}>Add Class</Link></li>
+            <li><Link to={'/dashboard/feedback'}>FeedBack</Link></li>
+            <li><Link to={'/dashboard/allClass'}>All Class</Link></li>
             <li><Link to={'/'}>Home</Link></li>
           </ul>
 

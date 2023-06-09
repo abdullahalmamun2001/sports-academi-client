@@ -42,7 +42,7 @@ const AddClass = () => {
                             console.log(data)
                             if (data.insertedId) {
                                 Swal.fire({
-                                    position: 'top-center',
+                                    position: "top-center",
                                     icon: 'success',
                                     title: 'Your class is added',
                                     showConfirmButton: false,
@@ -92,7 +92,7 @@ const AddClass = () => {
                         </label>
                         <input type="file" name="image" className="file-input file-input-bordered w-full " />
                     </div>
-                    <input className="btn btn-lg mt-4" type="submit" value="Add Item" />
+                    <button className="btn btn-secondary">Add Item</button>
                 </form>
             </div>
         </div>
