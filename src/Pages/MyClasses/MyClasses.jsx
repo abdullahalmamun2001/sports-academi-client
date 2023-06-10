@@ -1,5 +1,7 @@
-import axios from "axios";
-import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+// import { Link } from "react-router-dom";
+// import axios from "axios";
+// import { useState } from "react";
 
 
 // const [myClass, setMyClass] = useState([])
@@ -10,22 +12,22 @@ import { useState } from "react";
 //     })
 
 const MyClasses = () => {
-    const {} = useQuery({
-        queryKey: ['repoData'],
+    const { data: myClass = [], refetch } = useQuery({
+        queryKey: ['purchase'],
         queryFn: () =>
-          fetch('https://api.github.com/repos/tannerlinsley/react-query').then(
-            (res) => res.json(),
-          ),
-      })
-const handleDeleteButton=(id)=>{
-    fetch(`http://localhost:5000/purchase/${id}`,{
-        method:"DELETE",
-     })
-    .then(res=>res.json())
-    .then(data=>{
-        console.log(data);
+            fetch('http://localhost:5000/purchase')
+                .then(res => res.json()),
     })
-}
+    const handleDeleteButton = (id) => {
+        fetch(`http://localhost:5000/purchase/${id}`, {
+            method: "DELETE",
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                refetch();
+            })
+    }
 
     return (
         <>
@@ -34,7 +36,7 @@ const handleDeleteButton=(id)=>{
                     {/* head */}
                     <thead>
                         <tr>
-                            
+
                             <th>#</th>
                             <th>image</th>
                             <th>instructorName</th>
@@ -44,40 +46,57 @@ const handleDeleteButton=(id)=>{
                         </tr>
                     </thead>
                     <tbody>
-                       {
-                        myClass.map((singleClass,index)=><tr key={singleClass._id}>
-                            <td>{index+1}</td>
-                            <td>
-                                <div className="flex items-center space-x-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
-                                            <img src={singleClass.photo} alt="Avatar Tailwind CSS Component" />
+                        {
+                            myClass.map((singleClass, index) => <tr key={singleClass._id}>
+                                <td>{index + 1}</td>
+                                <td>
+                                    <div className="flex items-center space-x-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src={singleClass.photo} alt="Avatar Tailwind CSS Component" />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="font-bold">{singleClass.name}</div>
+                                            <div className="text-sm opacity-50">{singleClass.email}</div>
                                         </div>
                                     </div>
+                                </td>
+                                <td>
+                                    {singleClass.instructorName}
+                                </td>
+                                <td>{singleClass.sit}</td>
+                                <th>
+                                    <button onClick={() => { handleDeleteButton(singleClass._id) }} className="btn btn-ghost btn-xs">Delete</button>
+                                </th>
+                                <th>
                                     <div>
-                                        <div className="font-bold">{singleClass.name}</div>
-                                        <div className="text-sm opacity-50">{singleClass.email}</div>
+                                        <label htmlFor="my_modal_7" onClick={()=>{singleClass._id}} className="btn btn-xs bg-orange-400"> Send feedback</label>
+
+                                        {/* Put this part before </body> tag */}
+                                        <input type="checkbox" id="my_modal_7" className="modal-toggle" />
+                                        <div className="modal">
+                                            <form className="modal-box">
+                                                <h3 className="text-lg font-bold">{singleClass.email}</h3>
+                                                <textarea name='feedback' placeholder="Write you " className="textarea textarea-bordered textarea-xs w-full max-w-xs" ></textarea>
+                                                <input type="submit" className='block px-5 py-3  bg-green-800 text-white rounded-md hover:bg-green-600' />
+                                            </form>
+                                            <label className="modal-backdrop" htmlFor="my_modal_7">Close</label>
+                                        </div>
+
                                     </div>
-                                </div>
-                            </td>
-                            <td>
-                                {singleClass.instructorName}
-                            </td>
-                            <td>{singleClass.sit}</td>
-                            <th>
-                                <button className="btn btn-ghost btn-xs">Delete</button>
-                            </th>
-                            <th>
-                                <button onClick={()=>{handleDeleteButton(singleClass._id)}} className="btn btn-primary btn-xs">Pay</button>
-                            </th>
-                        </tr>)
-                       }
-                        
-                        
-                        
-                       
+                                </th>
+                                {/* <th>
+                               <Link to={'/payment'} ><button  htmlFor="my_modal_7"  className="btn btn-primary btn-xs">Pay</button></Link>
+                            </th> */}
+                            </tr>)
+                        }
+
+
+
+
                     </tbody>
-                    
+
 
                 </table>
             </div>

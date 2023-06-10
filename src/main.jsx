@@ -18,6 +18,7 @@ import AddClass from './DashBoard/AddClass/AddClass.jsx';
 import Feedback from './Components/Feedback/Feedback.jsx';
 import AllClass from './DashBoard/DashBoard/AllClass/AllClass.jsx';
 import MyClasses from './Pages/MyClasses/MyClasses.jsx';
+import Payment from './Pages/Payment/Payment.jsx';
 
 // import User from './Components/User/User.jsx';
 
@@ -49,6 +50,7 @@ const router = createBrowserRouter([
         path: '/myclasses',
         element: <MyClasses></MyClasses>
       },
+      
       // {
       //   path: '/dashboard',
       //   element: <DashBoard></DashBoard>,
@@ -74,6 +76,10 @@ const router = createBrowserRouter([
       {
         path: 'addClass',
         element: <AddClass></AddClass>
+      },
+      {
+        path: 'payment',
+        element: <Payment></Payment>
       },
       {
         path: 'feedback',

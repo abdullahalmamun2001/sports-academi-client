@@ -32,6 +32,7 @@ const Class = () => {
           .then(res=>res.json())
           .then(data=>{
             console.log(data);
+            refetch()
           })
     }
     // const handlePost=()
