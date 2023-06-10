@@ -17,6 +17,7 @@ import Instructor from './Pages/Instructor/Instructor.jsx';
 import AddClass from './DashBoard/AddClass/AddClass.jsx';
 import Feedback from './Components/Feedback/Feedback.jsx';
 import AllClass from './DashBoard/DashBoard/AllClass/AllClass.jsx';
+import MyClasses from './Pages/MyClasses/MyClasses.jsx';
 
 // import User from './Components/User/User.jsx';
 
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/myclasses',
+        element: <MyClasses></MyClasses>
       },
       // {
       //   path: '/dashboard',

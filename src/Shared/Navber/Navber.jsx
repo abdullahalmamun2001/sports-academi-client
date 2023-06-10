@@ -22,6 +22,7 @@ const Navber = () => {
                         }
                         <li><Link to={'/dashboard'}>DashBoard</Link></li>
                         <li><Link to={'/instructor'}>Instructor</Link></li>
+                        <li><Link to={'/myclasses'}>Selected Class</Link></li>
                     </ul>
                 </div>
                 <a className="btn btn-ghost normal-case text-xl">Sports academies</a>
@@ -34,6 +35,7 @@ const Navber = () => {
                     }
                     <li><Link to={'/dashboard'}>DashBoard</Link></li>
                     <li><Link to={'/instructor'}>Instructor</Link></li>
+                    <li><Link to={'/myclasses'}>Selected Class</Link></li>
                 </ul>
             </div>
             <div className="dropdown dropdown-end">

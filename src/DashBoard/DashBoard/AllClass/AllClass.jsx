@@ -43,6 +43,23 @@ const AllClass = () => {
         refetch();
       })
   }
+  // const handleFeedbackButton = (id) => {
+  //   const form=event.target;
+
+  //   const update = { status: status }
+  //   fetch(`http://localhost:5000/class/feedback/${id}`, {
+  //     method: "PATCH",
+  //     headers: {
+  //       "content-type": "application/json"
+  //     },
+  //     body: JSON.stringify(update)
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       console.log(data)
+  //       refetch();
+  //     })
+  // }
   return (
     <div className="grid md:grid-cols-2">
       {
