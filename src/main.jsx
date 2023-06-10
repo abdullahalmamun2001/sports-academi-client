@@ -19,6 +19,7 @@ import Feedback from './Components/Feedback/Feedback.jsx';
 import AllClass from './DashBoard/DashBoard/AllClass/AllClass.jsx';
 import MyClasses from './Pages/MyClasses/MyClasses.jsx';
 import Payment from './Pages/Payment/Payment.jsx';
+import PrivateRoute from './Router/PrivateRoute.jsx';
 
 // import User from './Components/User/User.jsx';
 
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/instructor',
-        element: <Instructor></Instructor>
+        element: <PrivateRoute><Instructor></Instructor></PrivateRoute>
       },
       {
         path: '/register',
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/myclasses',
-        element: <MyClasses></MyClasses>
+        element: <PrivateRoute><MyClasses></MyClasses></PrivateRoute>
       },
       
       // {

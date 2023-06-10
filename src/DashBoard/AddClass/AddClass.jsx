@@ -27,8 +27,15 @@ const AddClass = () => {
             .then(imageRes => {
                 console.log(imageRes);
                 if (imageRes.success) {
+                    //Class name
+                    // Class Image
+                    // Instructor name (read-only) (use the displayName value of logged in user/instructor)
+                    // Instructor email (read-only) (use the email value of logged in user/instructor)
+                    // Available seats
+                    // Price
+                    // Add button
                     const imageURL = imageRes.data.display_url
-                    const newForm = { name, price:parseFloat(price), sit:parseInt(sit), email, image:imageURL, instructorName };
+                    const newForm = { name, price: parseFloat(price), sit: parseInt(sit), email, image: imageURL, instructorName };
                     fetch('http://localhost:5000/class', {
                         method: "POST",
                         headers: {

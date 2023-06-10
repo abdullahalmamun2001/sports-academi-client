@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 
 
 const AllClass = () => {
@@ -65,12 +66,20 @@ const AllClass = () => {
       {
         classes.map(s => <div key={s._id} className="card w-96 bg-base-100 shadow-xl">
           <figure><img src={s.image} alt="Shoes" /></figure>
-          <div className="card-body">
-            <h2 className="card-title">
-              {s.name ? s.name : "Don't find Name"}
+          <div className="card-body flex">
+            <div className="">
+              <div>
+                <h2 className="card-title">
+                  {s.name ? s.name : "Don't find Name"}
 
-            </h2>
-            <p>Price : {s.price}</p>
+                </h2>
+                <p>Price : {s.price}</p>
+              </div>
+              <div>
+                <h1>Instructor Name :{s.instructorName}</h1>
+                <h2>Instructor Email : {s.email}</h2>
+              </div>
+            </div>
             <div>
               {
                 s.status == "approve" ? <button disabled className="btn btn-secondary">Approve</button> : <button onClick={() => handleApproveButton(s._id)} className="btn btn-secondary">Approve</button>
@@ -84,10 +93,13 @@ const AllClass = () => {
 
             </div>
             <div>
-              <label htmlFor="my_modal_7" className="btn btn-xs bg-orange-400"> Send feedback</label>
+              <Link to={'/dashboard/payment'}><button className="btn btn-outline">Payment</button></Link>
+            </div>
+            {/* <div>
+              <label htmlFor="my_modal_7" className="btn btn-xs bg-orange-400"> Send feedback</label> */}
 
-              {/* Put this part before </body> tag */}
-              <input type="checkbox" id="my_modal_7" className="modal-toggle" />
+            {/* Put this part before </body> tag */}
+            {/* <input type="checkbox" id="my_modal_7" className="modal-toggle" />
               <div className="modal">
                 <form className="modal-box">
                   <h3 className="text-lg font-bold">Send FeedBack</h3>
@@ -97,12 +109,12 @@ const AllClass = () => {
                 <label className="modal-backdrop" htmlFor="my_modal_7">Close</label>
               </div>
 
-            </div>
-            </div>
-          </div>)
+            </div> */}
+          </div>
+        </div>)
       }
-        </div>
-        );
+    </div>
+  );
 };
 
-      export default AllClass;
+export default AllClass;

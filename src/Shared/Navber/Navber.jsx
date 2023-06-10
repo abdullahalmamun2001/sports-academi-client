@@ -17,12 +17,13 @@ const Navber = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to={'/'}>Home</Link></li>
-                        {
-                            user ? <li><button onClick={handleLogOut}>logout</button></li> : <li><Link to={'/login'}>Login</Link></li>
-                        }
+                       
                         <li><Link to={'/dashboard'}>DashBoard</Link></li>
                         <li><Link to={'/instructor'}>Instructor</Link></li>
                         <li><Link to={'/myclasses'}>Selected Class</Link></li>
+                        {
+                            user ? <li><button onClick={handleLogOut}>logout</button></li> : <li><Link to={'/login'}>Login</Link></li>
+                        }
                     </ul>
                 </div>
                 <a className="btn btn-ghost normal-case text-xl">Sports academies</a>
@@ -30,12 +31,12 @@ const Navber = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     <li><Link to={'/'}>Home</Link></li>
-                    {
-                        user ? <li><button onClick={handleLogOut}>logout</button></li> : <li><Link to={'/login'}>Login</Link></li>
-                    }
                     <li><Link to={'/dashboard'}>DashBoard</Link></li>
                     <li><Link to={'/instructor'}>Instructor</Link></li>
                     <li><Link to={'/myclasses'}>Selected Class</Link></li>
+                    {
+                        user ? <li><button onClick={handleLogOut}>logout</button></li> : <li><Link to={'/login'}>Login</Link></li>
+                    }
                 </ul>
             </div>
             <div className="dropdown dropdown-end">
@@ -44,16 +45,7 @@ const Navber = () => {
                         <img src={user?.photoURL} />
                     </div>
                 </label>
-                <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                    <li>
-                        <a className="justify-between">
-                            Profile
-                            <span className="badge">New</span>
-                        </a>
-                    </li>
-                    <li><a>Settings</a></li>
-                    <li><a>Logout</a></li>
-                </ul>
+                
             </div>
         </div>
     );
