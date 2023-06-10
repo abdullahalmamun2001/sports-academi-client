@@ -1,4 +1,5 @@
 import { CardElement, useStripe } from "@stripe/react-stripe-js";
+import '../Payment/CheakOut.css'
 
 
 const CheakOut = () => {
