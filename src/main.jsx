@@ -15,11 +15,12 @@ import User from './Components/User/User.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Instructor from './Pages/Instructor/Instructor.jsx';
 import AddClass from './DashBoard/AddClass/AddClass.jsx';
-import Feedback from './Components/Feedback/Feedback.jsx';
+// import Feedback from './Components/Feedback/Feedback.jsx';
 import AllClass from './DashBoard/DashBoard/AllClass/AllClass.jsx';
 import MyClasses from './Pages/MyClasses/MyClasses.jsx';
 import Payment from './Pages/Payment/Payment.jsx';
 import PrivateRoute from './Router/PrivateRoute.jsx';
+import InstructorClass from './Components/InstructorClass/InstructorClass.jsx';
 
 // import User from './Components/User/User.jsx';
 
@@ -79,17 +80,23 @@ const router = createBrowserRouter([
         element: <AddClass></AddClass>
       },
       {
-        path: 'payment',
-        element: <Payment></Payment>
+        path: 'payment/:id',
+        element: <Payment></Payment>,
+        // loader:({params})=>fetch(`http://localhost:5000/pay/${params.id}`)
+        
       },
-      {
-        path: 'feedback',
-        element: <Feedback></Feedback>
-      },
+      // {
+      //   path: 'feedback/:id',
+      //   element: <Feedback></Feedback>
+      // },
       {
         path: 'allClass',
         element: <AllClass></AllClass>
-      }
+      },
+      {
+        path: 'instructorClass',
+        element: <InstructorClass></InstructorClass>
+      },
     ]
   }
 ]);

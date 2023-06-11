@@ -9,7 +9,7 @@ const Class = () => {
         return res.json();
       })
       const approve=classes.filter(item=>item.status=="approve")
-      console.log(typeof approve);
+      // console.log(typeof approve);
 
     const handlePurchaseClass=(item)=>{
         const name=item.name

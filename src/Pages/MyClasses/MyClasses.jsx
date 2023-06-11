@@ -1,4 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
+import UseMyClass from "../../hooks/UseMyClass";
 // import { Link } from "react-router-dom";
 // import axios from "axios";
 // import { useState } from "react";
@@ -12,12 +14,17 @@ import { useQuery } from "@tanstack/react-query";
 //     })
 
 const MyClasses = () => {
-    const { data: myClass = [], refetch } = useQuery({
-        queryKey: ['purchase'],
-        queryFn: () =>
-            fetch('http://localhost:5000/purchase')
-                .then(res => res.json()),
-    })
+    const [myClasses, refetch, loading] = UseMyClass();
+    if (loading) {
+        return <progress className="w-40"></progress>
+    }
+
+    // const { data: myClass = [], refetch } = useQuery({
+    //     queryKey: ['purchase'],
+    //     queryFn: () =>
+    //         fetch('http://localhost:5000/purchase')
+    //             .then(res => res.json()),
+    // })
     const handleDeleteButton = (id) => {
         fetch(`http://localhost:5000/purchase/${id}`, {
             method: "DELETE",
@@ -47,7 +54,7 @@ const MyClasses = () => {
                     </thead>
                     <tbody>
                         {
-                            myClass.map((singleClass, index) => <tr key={singleClass._id}>
+                            myClasses.map((singleClass, index) => <tr key={singleClass._id}>
                                 <td>{index + 1}</td>
                                 <td>
                                     <div className="flex items-center space-x-3">
@@ -69,11 +76,11 @@ const MyClasses = () => {
                                 <th>
                                     <button onClick={() => { handleDeleteButton(singleClass._id) }} className="btn btn-ghost btn-xs">Delete</button>
                                 </th>
-                                <th>
+                                {/* <th>
                                     <div>
                                         <label htmlFor="my_modal_7" onClick={()=>{singleClass._id}} className="btn btn-xs bg-orange-400"> Send feedback</label>
 
-                                        {/* Put this part before </body> tag */}
+                                        Put this part before </body> tag
                                         <input type="checkbox" id="my_modal_7" className="modal-toggle" />
                                         <div className="modal">
                                             <form className="modal-box">
@@ -85,10 +92,10 @@ const MyClasses = () => {
                                         </div>
 
                                     </div>
+                                </th> */}
+                                <th>
+                                    <Link to={`/dashboard/payment/${singleClass._id}`} ><button className="btn btn-primary btn-xs">Pay</button></Link>
                                 </th>
-                                {/* <th>
-                               <Link to={'/payment'} ><button  htmlFor="my_modal_7"  className="btn btn-primary btn-xs">Pay</button></Link>
-                            </th> */}
                             </tr>)
                         }
 

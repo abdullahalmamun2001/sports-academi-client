@@ -1,8 +1,23 @@
 import { Link, Outlet } from 'react-router-dom'
+import useAdminSecure from '../../hooks/useAdminSecure';
+// import useManageUser from '../../hooks/useManageUser';
+// import { useContext } from 'react';
+// import { AuthContext } from '../../Provider/AuthProvider';
 
 // import { Outlet } from "react-router-dom";
 
 const DashBoard = () => {
+  const [isAdmin]=useAdminSecure();
+  console.log(isAdmin);
+
+
+
+
+  // const [users]=useManageUser();
+  // const role=users.map(i=>console.log(i.role));
+  // const admin=users.filter(i=>i.role=="admin")
+  // const instructor=users.filter(i=>i.role=="instructor")
+  // const {user}=useContext(AuthContext)
   return (
     <>
       <div className="drawer lg:drawer-open">
@@ -18,7 +33,9 @@ const DashBoard = () => {
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
             <li><Link to={'/dashboard/user'}>Manage User</Link></li>
+            
             <li><Link to={'/dashboard/addClass'}>Add Class</Link></li>
+            <li><Link to={'/dashboard/instructorClass'}>Instructor Class</Link></li>
             <li><Link to={'/dashboard/feedback'}>FeedBack</Link></li>
             <li><Link to={'/dashboard/allClass'}>All Class</Link></li>
             <li><Link to={'/dashboard/payment'}>Payment</Link></li>
@@ -26,7 +43,8 @@ const DashBoard = () => {
           </ul>
 
         </div>
-      </div></>
+      </div>
+    </>
   );
 };
 

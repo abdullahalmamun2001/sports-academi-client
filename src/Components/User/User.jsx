@@ -1,13 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
+import useManageUser from "../../hooks/useManageUser";
 // import {  useEffect, useState } from "react";
 // import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const User = () => {
-  const { data: users = [], refetch } = useQuery(['users'], async () => {
-    const res = await fetch('http://localhost:5000/user')
-    return res.json();
-  })
+  const [users,refetch]=useManageUser()
+  // const { data: users = [], refetch } = useQuery(['users'], async () => {
+  //   const res = await fetch('http://localhost:5000/user')
+  //   return res.json();
+  // })
   // queryKey: ['user'],
   // queryFn: () =>fetch('http://localhost:5000/user')
   //   .then((res) => res.json(),

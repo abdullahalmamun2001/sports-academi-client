@@ -1,12 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import useAllClasses from "../../../hooks/useAllClasses";
+// import Feedback from "../../../Components/Feedback/Feedback";
 
 
 const AllClass = () => {
-  const { data: classes = [], refetch } = useQuery(['classes'], async () => {
-    const res = await fetch('http://localhost:5000/class')
-    return res.json();
-  })
+  const [classes, refetch] = useAllClasses()
+  // const { data: classes = [], refetch } = useQuery(['classes'], async () => {
+  //   const res = await fetch('http://localhost:5000/class')
+  //   return res.json();
+  // })
 
 
 
@@ -44,6 +47,30 @@ const AllClass = () => {
         refetch();
       })
   }
+  // const handleFeedback = (event) => {
+  //   event.preventDefault()
+  //   const form = event.target;
+  //   const feedback = form.feedback.value;
+  //   console.log(feedback);
+  //   const updateFeedback = { feedback: feedback }
+  //   return updateFeedback;
+
+  // }
+  // const updateFeedbackButton = (id) => {
+  //   fetch(`http://localhost:5000/class/denied/${id}`, {
+  //     method: "PATCH",
+  //     headers: {
+  //       "content-type": "application/json"
+  //     },
+  //     body: JSON.stringify(updateFeedback)
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       console.log(data)
+  //       refetch();
+  //     })
+
+  // }
   // const handleFeedbackButton = (id) => {
   //   const form=event.target;
 
@@ -92,8 +119,11 @@ const AllClass = () => {
               }
 
             </div>
+            {/* <div>
+              <Feedback></Feedback>
+            </div> */}
             <div>
-              <Link to={'/dashboard/payment'}><button className="btn btn-outline">Payment</button></Link>
+              <Link to={`/dashboard/payment/${s._id}`}><button className="btn btn-outline">Payment</button></Link>
             </div>
             {/* <div>
               <label htmlFor="my_modal_7" className="btn btn-xs bg-orange-400"> Send feedback</label> */}

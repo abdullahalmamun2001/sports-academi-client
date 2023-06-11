@@ -98,14 +98,32 @@ import { Elements } from '@stripe/react-stripe-js';
 
 import CheakOut from './CheakOut';
 import { loadStripe } from '@stripe/stripe-js';
+import {  useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+// import { useQuery } from '@tanstack/react-query';
 
 const Payment = () => {
+    const [selectData,setSelectData]=useState({})
+
+
+    const data=useParams();
+    console.log(data);
+    useEffect(()=>{
+        fetch(`http://localhost:5000/pay/${data.id}`)
+        .then(res=>res.json())
+        .then(data=>{
+            data.map(single=>setSelectData(single))
+        })
+    },[data])
+
+    
+
     return (
         <div>
-            <h1>this is paymment page</h1>
+            <h1>this is payment page</h1>
            
             <Elements stripe={stripePromise}>
-                <CheakOut></CheakOut>
+                <CheakOut selectData={selectData}></CheakOut>
             </Elements>
         </div>
     );

@@ -1,11 +1,44 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import '../Payment/CheakOut.css'
+import './CheakOut.css'
+
+import { useEffect } from "react";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useState } from "react";
+import { createContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+// import useAllClasses from "../../hooks/useAllClasses";
+// import { useParams } from "react-router-dom";
 
 
-const CheakOut = () => {
+const CheakOut = ({selectData}) => {
+  const {price}=selectData();
+  console.log(selectData);
+  // const data=useParams()
+  // console.log(data);
+   
+  // const [classes]=useAllClasses();
+  // const {price}=classes;
+  // console.log(price);
 
     const stripe=useStripe();
     const elements=useElements()
+    const {user}=createContext(AuthContext)
+    const [clientSecret,setClientSecret]=useState('')
+    const [axiosSecure]=useAxiosSecure();
+
+
+
+    useEffect(() => {
+      if (price > 0) {
+          axiosSecure.post('/create-payment-intent', { price })
+              .then(res => {
+                  console.log(res.data.clientSecret)
+                  setClientSecret(res.data.clientSecret);
+              })
+      }
+  }, [price,axiosSecure])
+
+    
     const handleSubmit=async(event)=>{
         event.preventDefault();
          event.preventDefault();
@@ -31,6 +64,22 @@ const CheakOut = () => {
       card,
     });
 
+
+    const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
+      clientSecret,
+      {
+          payment_method: {
+              card: card,
+              billing_details: {
+                  email: user?.email || 'unknown person',
+                  name: user?.displayName || 'anonymous person'
+              },
+          },
+      },
+  );
+  if(confirmError){
+
+  }
     if (error) {
       console.log('[error]', error);
     } else {
@@ -41,6 +90,7 @@ const CheakOut = () => {
     }
     return (
         <form onSubmit={handleSubmit}>
+          <p>Price :{selectData.price}</p>
         <CardElement
           options={{
             style: {
