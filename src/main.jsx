@@ -21,6 +21,7 @@ import MyClasses from './Pages/MyClasses/MyClasses.jsx';
 import Payment from './Pages/Payment/Payment.jsx';
 import PrivateRoute from './Router/PrivateRoute.jsx';
 import InstructorClass from './Components/InstructorClass/InstructorClass.jsx';
+import UpdateIns from './Pages/UpdateIns/UpdateIns.jsx';
 
 // import User from './Components/User/User.jsx';
 
@@ -82,8 +83,8 @@ const router = createBrowserRouter([
       {
         path: 'payment/:id',
         element: <Payment></Payment>,
-        // loader:({params})=>fetch(`http://localhost:5000/pay/${params.id}`)
-        
+        // loader:({params})=>fetch(`  https://academy-sports-abdullahalmamun2001.vercel.app/pay/${params.id}`)
+
       },
       // {
       //   path: 'feedback/:id',
@@ -96,6 +97,11 @@ const router = createBrowserRouter([
       {
         path: 'instructorClass',
         element: <InstructorClass></InstructorClass>
+      },
+      {
+        path: 'update/:id',
+        element: <UpdateIns></UpdateIns>,
+        loader:({params})=>fetch(`http://localhost:5000/class/${params.id}`)
       },
     ]
   }

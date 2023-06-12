@@ -5,7 +5,7 @@ const UseMyClass = () => {
     const { data: myClasses = [], refetch,isLoading:loading } = useQuery({
         queryKey: ['purchase'],
         queryFn: async() =>{
-            const res= await fetch('http://localhost:5000/purchase')
+            const res= await fetch('  https://academy-sports-abdullahalmamun2001.vercel.app/purchase')
             return res.json()
         }
             

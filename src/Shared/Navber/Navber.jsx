@@ -5,8 +5,8 @@ const Navber = () => {
     const { logOut, user } = useContext(AuthContext)
     const handleLogOut = () => {
         logOut()
-            .then(() => { })
-            .catch(() => { })
+            .then((result) => {result})
+            .catch((error) => { error})
     }
     return (
         <div className="navbar bg-base-100">

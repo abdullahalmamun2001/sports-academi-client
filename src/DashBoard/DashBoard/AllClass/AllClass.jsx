@@ -7,7 +7,7 @@ import useAllClasses from "../../../hooks/useAllClasses";
 const AllClass = () => {
   const [classes, refetch] = useAllClasses()
   // const { data: classes = [], refetch } = useQuery(['classes'], async () => {
-  //   const res = await fetch('http://localhost:5000/class')
+  //   const res = await fetch('  https://academy-sports-abdullahalmamun2001.vercel.app/class')
   //   return res.json();
   // })
 
@@ -18,7 +18,7 @@ const AllClass = () => {
   const handleApproveButton = (id) => {
     const status = 'approve';
     const update = { status: status }
-    fetch(`http://localhost:5000/class/approve/${id}`, {
+    fetch(`  https://academy-sports-abdullahalmamun2001.vercel.app/class/approve/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json"
@@ -34,7 +34,7 @@ const AllClass = () => {
   const handleDenyButton = (id) => {
     const status = 'denied';
     const update = { status: status }
-    fetch(`http://localhost:5000/class/denied/${id}`, {
+    fetch(`  https://academy-sports-abdullahalmamun2001.vercel.app/class/denied/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json"
@@ -57,7 +57,7 @@ const AllClass = () => {
 
   // }
   // const updateFeedbackButton = (id) => {
-  //   fetch(`http://localhost:5000/class/denied/${id}`, {
+  //   fetch(`  https://academy-sports-abdullahalmamun2001.vercel.app/class/denied/${id}`, {
   //     method: "PATCH",
   //     headers: {
   //       "content-type": "application/json"
@@ -75,7 +75,7 @@ const AllClass = () => {
   //   const form=event.target;
 
   //   const update = { status: status }
-  //   fetch(`http://localhost:5000/class/feedback/${id}`, {
+  //   fetch(`  https://academy-sports-abdullahalmamun2001.vercel.app/class/feedback/${id}`, {
   //     method: "PATCH",
   //     headers: {
   //       "content-type": "application/json"

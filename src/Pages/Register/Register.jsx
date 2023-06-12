@@ -78,7 +78,7 @@ const Register = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 const user={email:result.user.email,name:loggedUser.displayName, photo:loggedUser.photoURL}
-                fetch(`http://localhost:5000/user/${result.user.email}`, {
+                fetch(`  https://academy-sports-abdullahalmamun2001.vercel.app/user/${result.user.email}`, {
                     method: "PUT",
                     headers: {
                         'content-type': "application/json",
@@ -131,8 +131,7 @@ const Register = () => {
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Sign up now!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                        
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">

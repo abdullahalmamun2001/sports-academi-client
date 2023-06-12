@@ -1,5 +1,5 @@
 import { Link, Outlet } from 'react-router-dom'
-import useAdminSecure from '../../hooks/useAdminSecure';
+// import useAdminSecure from '../../hooks/useAdminSecure';
 // import useManageUser from '../../hooks/useManageUser';
 // import { useContext } from 'react';
 // import { AuthContext } from '../../Provider/AuthProvider';
@@ -7,8 +7,12 @@ import useAdminSecure from '../../hooks/useAdminSecure';
 // import { Outlet } from "react-router-dom";
 
 const DashBoard = () => {
-  const [isAdmin]=useAdminSecure();
-  console.log(isAdmin);
+  // const [isAdmin,isAdminLoading]=useAdminSecure();
+  // if(isAdminLoading){
+  //   return <progress className='w-40'></progress>
+  // }
+  // console.log(isAdmin);
+  
 
 
 

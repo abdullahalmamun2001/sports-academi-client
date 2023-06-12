@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 const Class = () => {
     // const [clas,setClas]=useState([])
     const { data: classes = [], refetch } = useQuery(['classes'], async () => {
-        const res = await fetch(`http://localhost:5000/classes?status=${'approve'}`);
+        const res = await fetch(`  https://academy-sports-abdullahalmamun2001.vercel.app/classes?status=${'approve'}`);
         return res.json();
       })
       const approve=classes.filter(item=>item.status=="approve")
@@ -21,7 +21,7 @@ const Class = () => {
         // const id=item._id;
         const addClass={name,instructorName,email,status,price,sit}
         
-        fetch('http://localhost:5000/purchase',{
+        fetch('  https://academy-sports-abdullahalmamun2001.vercel.app/purchase',{
             method:"POST",
             headers:{
               'content-type':"application/json",

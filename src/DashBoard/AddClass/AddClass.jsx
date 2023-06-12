@@ -36,7 +36,7 @@ const AddClass = () => {
                     // Add button
                     const imageURL = imageRes.data.display_url
                     const newForm = { name, price: parseFloat(price), sit: parseInt(sit), email, image: imageURL, instructorName };
-                    fetch('http://localhost:5000/class', {
+                    fetch('  https://academy-sports-abdullahalmamun2001.vercel.app/class', {
                         method: "POST",
                         headers: {
                             'content-type': "application/json",

@@ -21,7 +21,7 @@
 //     //     const form = event.target;
 //     //     const feedback = form.feedback.value;
 //     //     console.log(feedback);
-//     //     fetch(`http://localhost:5000/class/approve/${}`, {
+//     //     fetch(`  https://academy-sports-abdullahalmamun2001.vercel.app/class/approve/${}`, {
 //     //           method: "PATCH",
 //     //           headers: {
 //     //             "content-type": "application/json"
@@ -38,7 +38,7 @@
 //         //     const feedbackUpdate={feedback:feedback}
             
             
-//         //     fetch(`http://localhost:5000/class/approve/${id}`, {
+//         //     fetch(`  https://academy-sports-abdullahalmamun2001.vercel.app/class/approve/${id}`, {
 //         //       method: "PATCH",
 //         //       headers: {
 //         //         "content-type": "application/json"
@@ -60,7 +60,7 @@
 //         }).then((result) => {
 //             /* Read more about isConfirmed, isDenied below */
 //             if (result.isConfirmed) {
-//                 axios.put(`http://localhost:5000/class/${feedID}`,{feedback:feedback})
+//                 axios.put(`  https://academy-sports-abdullahalmamun2001.vercel.app/class/${feedID}`,{feedback:feedback})
 
 //                 Swal.fire('Saved!', '', 'success')
 //             } else if (result.isDenied) {

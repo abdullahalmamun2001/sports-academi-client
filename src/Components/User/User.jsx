@@ -7,18 +7,18 @@ import useManageUser from "../../hooks/useManageUser";
 const User = () => {
   const [users,refetch]=useManageUser()
   // const { data: users = [], refetch } = useQuery(['users'], async () => {
-  //   const res = await fetch('http://localhost:5000/user')
+  //   const res = await fetch('  https://academy-sports-abdullahalmamun2001.vercel.app/user')
   //   return res.json();
   // })
   // queryKey: ['user'],
-  // queryFn: () =>fetch('http://localhost:5000/user')
+  // queryFn: () =>fetch('  https://academy-sports-abdullahalmamun2001.vercel.app/user')
   //   .then((res) => res.json(),
   //   ),
   // })
   // const { user } = useContext(AuthContext)
   // const [users, setUsers] = useState([])
   // useEffect(() => {
-  //   fetch('http://localhost:5000/user')
+  //   fetch('  https://academy-sports-abdullahalmamun2001.vercel.app/user')
   //     .then(res => res.json())
   //     .then(data => {
   //       console.log(data)
@@ -26,7 +26,7 @@ const User = () => {
   //     })
   // }, [])
   const handleMakeAdmin = (id) => {
-    fetch(`http://localhost:5000/user/${id}`, {
+    fetch(`  https://academy-sports-abdullahalmamun2001.vercel.app/user/${id}`, {
       method: "PATCH",
     })
       .then(result => {
@@ -36,7 +36,7 @@ const User = () => {
       .catch(error => { console.log(error); })
   }
   const handleMakeInstructor = (id) => {
-    fetch(`http://localhost:5000/user/admin/${id}`, {
+    fetch(`  https://academy-sports-abdullahalmamun2001.vercel.app/user/admin/${id}`, {
       method: "PATCH",
     })
       .then(result => {

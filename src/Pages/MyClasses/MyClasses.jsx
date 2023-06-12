@@ -7,7 +7,7 @@ import UseMyClass from "../../hooks/UseMyClass";
 
 
 // const [myClass, setMyClass] = useState([])
-// axios.get('http://localhost:5000/purchase')
+// axios.get('  https://academy-sports-abdullahalmamun2001.vercel.app/purchase')
 //     .then(data => {
 //         setMyClass(data.data)
 
@@ -22,11 +22,11 @@ const MyClasses = () => {
     // const { data: myClass = [], refetch } = useQuery({
     //     queryKey: ['purchase'],
     //     queryFn: () =>
-    //         fetch('http://localhost:5000/purchase')
+    //         fetch('  https://academy-sports-abdullahalmamun2001.vercel.app/purchase')
     //             .then(res => res.json()),
     // })
     const handleDeleteButton = (id) => {
-        fetch(`http://localhost:5000/purchase/${id}`, {
+        fetch(`  https://academy-sports-abdullahalmamun2001.vercel.app/purchase/${id}`, {
             method: "DELETE",
         })
             .then(res => res.json())
@@ -38,7 +38,7 @@ const MyClasses = () => {
 
     return (
         <>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto bg-yellow-300 text-black">
                 <table className="table">
                     {/* head */}
                     <thead>

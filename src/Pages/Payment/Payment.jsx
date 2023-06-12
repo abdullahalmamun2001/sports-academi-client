@@ -109,7 +109,7 @@ const Payment = () => {
     const data=useParams();
     console.log(data);
     useEffect(()=>{
-        fetch(`http://localhost:5000/pay/${data.id}`)
+        fetch(`  https://academy-sports-abdullahalmamun2001.vercel.app/pay/${data.id}`)
         .then(res=>res.json())
         .then(data=>{
             data.map(single=>setSelectData(single))

@@ -16,7 +16,7 @@ const Login = () => {
     signIn(email,password)
       .then(result => {
         const user={email:result.user.email,photo:result.user.photoURL}
-        fetch(`http://localhost:5000/user/${result.user.email}`,{
+        fetch(`  https://academy-sports-abdullahalmamun2001.vercel.app/user/${result.user.email}`,{
         method:"PUT",
         headers:{
           'content-type':"application/json",
@@ -39,7 +39,7 @@ const Login = () => {
     .then(result=>{
       const loggedUser=result.user;
       const user={email:loggedUser.email, name:loggedUser.displayName, photo:loggedUser.photoURL}
-      fetch(`http://localhost:5000/user/${result.user.email}`,{
+      fetch(`  https://academy-sports-abdullahalmamun2001.vercel.app/user/${result.user.email}`,{
         method:"PUT",
         headers:{
           'content-type':"application/json",

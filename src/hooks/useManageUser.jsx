@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const useManageUser = () => {
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch('http://localhost:5000/user')
+        const res = await fetch('  https://academy-sports-abdullahalmamun2001.vercel.app/user')
         return res.json();
       })
     return [users,refetch]
