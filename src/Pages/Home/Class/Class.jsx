@@ -1,4 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider";
 // import { useState } from "react";
 
 
@@ -10,11 +12,11 @@ const Class = () => {
       })
       const approve=classes.filter(item=>item.status=="approve")
       // console.log(typeof approve);
-
+      const {user}=useContext(AuthContext)
     const handlePurchaseClass=(item)=>{
         const name=item.name
-        const instructorName=item.instructorName;
-        const email=item.email;
+        const instructorName=user?.instructorName;
+        const email=user?.email;
         const status=item.status;
         const price=item.price;
         const sit=item.sit;

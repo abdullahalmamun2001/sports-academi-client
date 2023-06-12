@@ -5,7 +5,11 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const UpdateIns = () => {
     const data = useLoaderData()
-    console.log(data);
+    console.log(data._id);
+    console.log(data.name);
+    const {_id}=data;
+    console.log(_id);
+    console.log(_id);
     const {user}=useContext(AuthContext)
     const handleForm=(event)=>{
         event.preventDefault();
@@ -20,7 +24,7 @@ const UpdateIns = () => {
 
         const updateClass={name,price,email,instructorName,sit}
 
-        fetch(`http://localhost:5000/update/${data._id}`,{
+        fetch(`https://academy-sports-abdullahalmamun2001.vercel.app/update/${data._id}`,{
             method:"PUT",
             headers:{
                 'content-type':"application/json"
@@ -39,7 +43,7 @@ const UpdateIns = () => {
                     <form onSubmit={handleForm}>
                         <div className="form-control w-full mb-4">
                             <label className="label">
-                                <span className="label-text font-semibold">Class Name*</span>
+                                <span className="label-text font-semibold">Class Name</span>
                             </label>
                             <input type="text" name="name" placeholder="Class Name"
 
@@ -53,12 +57,7 @@ const UpdateIns = () => {
                                 </label>
                                 <input type="number" name="price" placeholder="Type here" className="input input-bordered w-full " />
                             </div>
-                            <div className="form-control w-full ml-4">
-                                <label className="label">
-                                    <span className="label-text font-semibold">Available sit</span>
-                                </label>
-                                <input type="number" name="sit" placeholder="Type here" className="input input-bordered w-full " />
-                            </div>
+                            
                             <div className="form-control w-full ml-4">
                                 <label className="label">
                                     <span className="label-text font-semibold">Available sit</span>
