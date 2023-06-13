@@ -1,6 +1,8 @@
 import { Link, Outlet } from 'react-router-dom'
 import useAdminSecure from '../../hooks/useAdminSecure';
 import useInstructorSecure from '../../hooks/useInstructorSecure';
+import { useContext } from 'react';
+import { AuthContext } from '../../Provider/AuthProvider';
 // import useManageUser from '../../hooks/useManageUser';
 // import { useContext } from 'react';
 // import { AuthContext } from '../../Provider/AuthProvider';
@@ -8,22 +10,20 @@ import useInstructorSecure from '../../hooks/useInstructorSecure';
 // import { Outlet } from "react-router-dom";
 
 const DashBoard = () => {
-  const [isAdmin,isAdminLoading]=useAdminSecure();
-  const [isInstructor,isInstructorLoading]=useInstructorSecure()
-  console.log(isAdmin);
-  if(isAdminLoading){
-    return <progress className='w-40'></progress>
+  const [isAdmin, isAdminLoading] = useAdminSecure();
+  const [isInstructor, isInstructorLoading] = useInstructorSecure();
+  const {user}=useContext(AuthContext)
+
+  const student = isAdmin || isInstructor;
+  console.log(isAdmin,isInstructor,student);
+  if (isAdminLoading) {
+    return <span className="loading loading-bars loading-md"></span>
   }
-  if(isInstructorLoading){
-    return <progress className='w-40'></progress>
+  if (isInstructorLoading) {
+    return <span className="loading loading-bars loading-md"></span>
   }
-  
 
-
-
-
- 
-  return (
+return (
     <>
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -38,24 +38,28 @@ const DashBoard = () => {
           <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
             {/* Sidebar content here */}
             {
-              
-               isAdmin && <>
-               <li><Link to={'/dashboard/user'}>Manage User</Link></li>
-               <li><Link to={'/dashboard/allClass'}>All Class</Link></li>
+
+              isAdmin && <>
+                <p className='text-red-100 text-3xl'>This is Admin dashboard</p>
+                <li><Link to={'/dashboard/user'}>Manage User</Link></li>
+                <li><Link to={'/dashboard/allClass'}>All Class</Link></li>
               </>
-             
+
             }
             {
               isInstructor && <>
-              <li><Link to={'/dashboard/addClass'}>Add Class</Link></li>
-            <li><Link to={'/dashboard/instructorClass'}>Instructor Class</Link></li>
+                <li><Link to={'/dashboard/addClass'}>Add Class</Link></li>
+                <li><Link to={'/dashboard/instructorClass'}>Instructor Class</Link></li>
               </>
             }
-            
-            
-            
-            <li><Link to={'/dashboard/payment'}>Payment</Link></li>
-            <li><Link to={'/'}>Home</Link></li>
+            {
+              student || user &&<>
+                
+                <li><Link to={'/dashboard/myclasses'}>Selected Class</Link></li>
+                <li><Link to={'/dashboard/payhistory'}>Payment Hostory</Link></li>
+                <li><Link to={'/'}>Home</Link></li>
+              </>
+            }
           </ul>
 
         </div>

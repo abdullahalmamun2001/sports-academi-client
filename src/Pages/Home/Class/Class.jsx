@@ -7,23 +7,25 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 const Class = () => {
     // const [clas,setClas]=useState([])
     const { data: classes = [], refetch } = useQuery(['classes'], async () => {
-        const res = await fetch(`  https://academy-sports-abdullahalmamun2001.vercel.app/classes?status=${'approve'}`);
+        const res = await fetch(`https://academy-sports-abdullahalmamun2001.vercel.app/classes?status=${'approve'}`);
         return res.json();
       })
       const approve=classes.filter(item=>item.status=="approve")
       // console.log(typeof approve);
       const {user}=useContext(AuthContext)
     const handlePurchaseClass=(item)=>{
+        const classId=item._id;
         const name=item.name
         const instructorName=user?.instructorName;
         const email=user?.email;
         const status=item.status;
+        const enrolled=0;
         const price=item.price;
         const sit=item.sit;
         // const id=item._id;
-        const addClass={name,instructorName,email,status,price,sit}
+        const addClass={classId,name,instructorName,email,status,price,sit,enrolled}
         
-        fetch('  https://academy-sports-abdullahalmamun2001.vercel.app/purchase',{
+        fetch('https://academy-sports-abdullahalmamun2001.vercel.app/purchase',{
             method:"POST",
             headers:{
               'content-type':"application/json",
@@ -46,7 +48,7 @@ const Class = () => {
             <div className="card-body">
               <h2 className="card-title">
                 {product.name?product.name:'NOT FOUND NAME'}
-                <div className="badge badge-secondary">NEW</div>
+               <p>Sit : {}</p>
               </h2>
               <p>Instructor Name :{product.instructorName}</p>
               <p>Instructor email :{product.email}</p>

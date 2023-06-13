@@ -1,11 +1,14 @@
-import { Link,useNavigate } from 'react-router-dom'
+import { Link,useLocation,useNavigate } from 'react-router-dom'
 
 import { FcGoogle } from 'react-icons/fc'
 import { useContext } from 'react'
 import { AuthContext } from '../../Provider/AuthProvider'
 
-const navigate= useNavigate
+
 const Login = () => {
+  const navigate = useNavigate();
+  const location=useLocation()
+  const from = location.state?.from?.pathname || "/";
   const { signIn,googleRegister } = useContext(AuthContext)
   const handleSignIn = (event) => {
     event.preventDefault();
@@ -28,6 +31,7 @@ const Login = () => {
       .then(data=>{
         console.log(data);
       })
+      navigate(from, { replace: true });
       })
       
       .catch(error => {
@@ -49,10 +53,10 @@ const Login = () => {
       })
       .then(res=>res.json())
       .then(data=>{
-        console.log(data);
+       console.log(data);
+        navigate(from, { replace: true });
       })
       console.log(result.user)
-      navigate('/')
     })
     .catch(error=>{console.log(error.user);})
   }

@@ -1,17 +1,7 @@
 // import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import UseMyClass from "../../hooks/UseMyClass";
-// import { Link } from "react-router-dom";
-// import axios from "axios";
-// import { useState } from "react";
 
-
-// const [myClass, setMyClass] = useState([])
-// axios.get('  https://academy-sports-abdullahalmamun2001.vercel.app/purchase')
-//     .then(data => {
-//         setMyClass(data.data)
-
-//     })
 
 const MyClasses = () => {
     const [myClasses, refetch, loading] = UseMyClass();
@@ -19,14 +9,9 @@ const MyClasses = () => {
         return <progress className="w-40"></progress>
     }
 
-    // const { data: myClass = [], refetch } = useQuery({
-    //     queryKey: ['purchase'],
-    //     queryFn: () =>
-    //         fetch('  https://academy-sports-abdullahalmamun2001.vercel.app/purchase')
-    //             .then(res => res.json()),
-    // })
+   
     const handleDeleteButton = (id) => {
-        fetch(`  https://academy-sports-abdullahalmamun2001.vercel.app/purchase/${id}`, {
+        fetch(`https://academy-sports-abdullahalmamun2001.vercel.app/purchase/${id}`, {
             method: "DELETE",
         })
             .then(res => res.json())
@@ -76,23 +61,7 @@ const MyClasses = () => {
                                 <th>
                                     <button onClick={() => { handleDeleteButton(singleClass._id) }} className="btn btn-ghost btn-xs">Delete</button>
                                 </th>
-                                {/* <th>
-                                    <div>
-                                        <label htmlFor="my_modal_7" onClick={()=>{singleClass._id}} className="btn btn-xs bg-orange-400"> Send feedback</label>
-
-                                        Put this part before </body> tag
-                                        <input type="checkbox" id="my_modal_7" className="modal-toggle" />
-                                        <div className="modal">
-                                            <form className="modal-box">
-                                                <h3 className="text-lg font-bold">{singleClass.email}</h3>
-                                                <textarea name='feedback' placeholder="Write you " className="textarea textarea-bordered textarea-xs w-full max-w-xs" ></textarea>
-                                                <input type="submit" className='block px-5 py-3  bg-green-800 text-white rounded-md hover:bg-green-600' />
-                                            </form>
-                                            <label className="modal-backdrop" htmlFor="my_modal_7">Close</label>
-                                        </div>
-
-                                    </div>
-                                </th> */}
+                                
                                 <th>
                                     <Link to={`/dashboard/payment/${singleClass._id}`} ><button className="btn btn-primary btn-xs">Pay</button></Link>
                                 </th>

@@ -22,6 +22,7 @@ import Payment from './Pages/Payment/Payment.jsx';
 import PrivateRoute from './Router/PrivateRoute.jsx';
 import InstructorClass from './Components/InstructorClass/InstructorClass.jsx';
 import UpdateIns from './Pages/UpdateIns/UpdateIns.jsx';
+import PaymentsHistory from './Pages/PaymentHistory/PaymentsHistory.jsx';
 
 // import User from './Components/User/User.jsx';
 
@@ -49,10 +50,7 @@ const router = createBrowserRouter([
         path: '/register',
         element: <Register></Register>
       },
-      {
-        path: '/myclasses',
-        element: <PrivateRoute><MyClasses></MyClasses></PrivateRoute>
-      },
+     
       
       // {
       //   path: '/dashboard',
@@ -70,7 +68,7 @@ const router = createBrowserRouter([
   },
   {
     path: 'dashboard',
-    element: <DashBoard></DashBoard>,
+    element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
     children: [
       {
         path: 'user',
@@ -83,13 +81,7 @@ const router = createBrowserRouter([
       {
         path: 'payment/:id',
         element: <Payment></Payment>,
-        // loader:({params})=>fetch(`  https://academy-sports-abdullahalmamun2001.vercel.app/pay/${params.id}`)
-
       },
-      // {
-      //   path: 'feedback/:id',
-      //   element: <Feedback></Feedback>
-      // },
       {
         path: 'allClass',
         element: <AllClass></AllClass>
@@ -103,6 +95,14 @@ const router = createBrowserRouter([
         element: <UpdateIns></UpdateIns>,
         loader:({params})=>fetch(`https://academy-sports-abdullahalmamun2001.vercel.app/class/${params.id}`)
       },
+      {
+        path: 'myclasses',
+        element: <PrivateRoute><MyClasses></MyClasses></PrivateRoute>
+      },
+      {
+        path:'payhistory',
+        element:<PaymentsHistory></PaymentsHistory>
+      }
     ]
   }
 ]);
